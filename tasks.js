@@ -13,7 +13,7 @@ const sleep = (ms) => {
 const main = async () => {
     const options = new chrome.Options()
     if(process.env.HEADLESS_CHROME) {
-      options.addArguments(["--headless", "--window-size=800,600"])
+      options.addArguments(["--headless", "--window-size=800,600", "--no-sandbox"])
     }
 
     const driver = new webdriver.Builder()
