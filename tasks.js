@@ -23,8 +23,6 @@ const main = async () => {
 
     const pageUrl = 'https://www.baidu.com';
     await driver.get(pageUrl)
-
-    await sleep(5000)
     driver.quit()
 }
 
