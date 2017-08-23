@@ -10,7 +10,7 @@ const sleep = (ms) => {
     })
 }
 
-export const main = async () => {
+const main = async () => {
     const options = new chrome.Options()
     if(process.env.HEADLESS_CHROME) {
       options.addArguments(["--headless", "--window-size=800,600"])
@@ -26,4 +26,8 @@ export const main = async () => {
 
     await sleep(5000)
     driver.quit()
+}
+
+module.exports = {
+    main
 }

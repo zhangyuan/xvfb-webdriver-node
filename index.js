@@ -1,3 +1,3 @@
-import { main } from './tasks'
+main = require('./tasks').main;
 
 main()
