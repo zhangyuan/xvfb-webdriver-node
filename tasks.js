@@ -4,16 +4,10 @@ const By = webdriver.By
 
 webdriver.promise.USE_PROMISE_MANAGER = false;
 
-const sleep = (ms) => {
-    return new Promise((resolve) => {
-        setTimeout(resolve, ms)
-    })
-}
-
 const main = async () => {
     const options = new chrome.Options()
     if(process.env.HEADLESS_CHROME) {
-      options.addArguments(["--headless", "--window-size=800,600", "--no-sandbox"])
+      options.addArguments(["--headless", "--window-size=800,600", "--no-sandbox", "--disable-gpu"])
     }
 
     const driver = new webdriver.Builder()
@@ -21,7 +15,7 @@ const main = async () => {
       .setChromeOptions(options)
       .build()
 
-    const pageUrl = 'https://www.baidu.com';
+    const pageUrl = 'https://www.google.com';
     await driver.get(pageUrl)
     driver.quit()
 }
