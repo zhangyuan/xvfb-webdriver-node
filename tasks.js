@@ -17,7 +17,21 @@ const main = async () => {
 
     const pageUrl = 'https://www.google.com';
     await driver.get(pageUrl)
+
+    const image = await driver.takeScreenshot();
+    await saveImage('screenshots/image.png', image);
     driver.quit()
+}
+
+const saveImage = async (filename, image) => {
+  return new Promise((resolve, reject) => {
+    require('fs').writeFile(filename, image, 'base64', function(err) {
+      if(err) {
+        return reject(err);
+      }
+      resolve();
+    });
+  })
 }
 
 module.exports = {

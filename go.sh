@@ -12,6 +12,8 @@ function setup {
     npm install
 }
 
+mkdir -p screenshots/
 
 setup
+
 xvfb-run npm start
