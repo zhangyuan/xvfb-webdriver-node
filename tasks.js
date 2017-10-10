@@ -7,7 +7,7 @@ webdriver.promise.USE_PROMISE_MANAGER = false;
 const main = async () => {
     const options = new chrome.Options()
     if(process.env.HEADLESS_CHROME) {
-      options.addArguments(["--headless", "--window-size=800,600", "--no-sandbox", "--disable-gpu"])
+      options.addArguments(["--headless", "--window-size=1200,600", "--no-sandbox", "--disable-gpu"])
     }
 
     const driver = new webdriver.Builder()
@@ -15,8 +15,11 @@ const main = async () => {
       .setChromeOptions(options)
       .build()
 
-    const pageUrl = 'https://www.google.com';
+    const pageUrl = 'https://stackoverflow.com/';
     await driver.get(pageUrl)
+
+    const height = await driver.executeScript("return document.body.scrollHeight");
+    driver.manage().window().setSize(1200, height);
 
     const image = await driver.takeScreenshot();
     await saveImage('screenshots/image.png', image);
