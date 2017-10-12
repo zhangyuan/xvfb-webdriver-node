@@ -6,6 +6,7 @@ docker build -t ${IMAGE_NAME} .
 
 docker run \
      --rm \
+     --shm-size=1024m \
      -v `pwd`/screenshots:/app/screenshots \
      -e HEADLESS_CHROME=TRUE \
      ${IMAGE_NAME} \
